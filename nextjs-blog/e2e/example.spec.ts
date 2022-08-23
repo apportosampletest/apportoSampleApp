@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test('should navigate to the about page', async ({ page }) => {
+test('should navigate to the login page', async ({ page }) => {
     // Start from the home page and go to index page 
     await page.goto('/login')
     // Find an element with the id 'username-field' and fill it
