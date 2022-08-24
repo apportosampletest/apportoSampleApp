@@ -11,8 +11,8 @@ jobs: #(it will have all the jobs avaliable in the plipeline listed)
         run: npx playwright install --with-deps #(running npx commands, we can use run colon | and below write all commands one by one,
                                                 # also we can add env colon below line add CI colon true)
       - name: install packages
-        run: npm@5 ci
+        run: npm ci
       # - name: Install  dependencies
       #   run: npm install
       - name: Run Playwright tests
-        run:  npm run playwright test 
+        run:  yarn run test:e2e 
