@@ -1,8 +1,10 @@
 name: Playwright Tests  #(name of the pipeline)
 on: #(on which event pipeline should run)
-  push:
-    branches: [testingGitCI] #(name of the branch on which the pipeline should run, 
-                              #it should not be main as no one pushes to main branch in real time projects)
+  # push:
+  #   branches: [testingGitCI] #(name of the branch on which the pipeline should run, 
+  #                             #it should not be main as no one pushes to main branch in real time projects)
+  pull_request:
+    branches: [testingGitCI]
 jobs: #(it will have all the jobs avaliable in the plipeline listed)
   test: #(name of the test, we can name it what ever we want)
     runs-on: ubuntu-latest #(platform that the user wants the pipeline to run on)
