@@ -13,4 +13,4 @@ jobs: #(it will have all the jobs avaliable in the plipeline listed)
       # - name: Install  dependencies
       #   run: npm install
       - name: Run Playwright tests
-        run:  npm playwright test  
+        run:  npm run test:e2e 
