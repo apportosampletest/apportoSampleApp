@@ -7,12 +7,19 @@ jobs: #(it will have all the jobs avaliable in the plipeline listed)
   test: #(name of the test, we can name it what ever we want)
     runs-on: ubuntu-latest #(platform that the user wants the pipeline to run on)
     steps: #(steps involved in this job, "-" below the steps means it can have multiple steps )
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+      - name: Install dependencies
+        run: npm ci
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps #(running npx commands, we can use run colon | and below write all commands one by one,
-                                                # also we can add env colon below line add CI colon true)
-      # - name: install packages
-      #   run: npm install
-      # - name: Install  dependencies
-      #   run: npm install
+        run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run:  yarn run test:e2e 
+        run: npx playwright test
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
