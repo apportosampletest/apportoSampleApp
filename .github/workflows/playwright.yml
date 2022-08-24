@@ -12,7 +12,7 @@ jobs: #(it will have all the jobs avaliable in the plipeline listed)
                                                 # also we can add env colon below line add CI colon true)
       - name: install packages
         run: npm@5 ci
-      - name: Install  dependencies
-        run: npm install
+      # - name: Install  dependencies
+      #   run: npm install
       - name: Run Playwright tests
         run:  npm run playwright test 
