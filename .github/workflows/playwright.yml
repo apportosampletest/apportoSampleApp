@@ -5,14 +5,14 @@ on: #(on which event pipeline should run)
                               #it should not be main as no one pushes to main branch in real time projects)
 jobs: #(it will have all the jobs avaliable in the plipeline listed)
   test: #(name of the test, we can name it what ever we want)
-    runs-on: node-latest #(platform that the user wants the pipeline to run on)
+    runs-on: ubuntu-latest #(platform that the user wants the pipeline to run on)
     steps: #(steps involved in this job, "-" below the steps means it can have multiple steps )
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps #(running npx commands, we can use run colon | and below write all commands one by one,
                                                 # also we can add env colon below line add CI colon true)
-      - name: Install  dependencies
-        run: yarn
       - name: install packages
-        run: npm ci
+        run: npm@5 ci
+      - name: Install  dependencies
+        run: npm install
       - name: Run Playwright tests
-        run:  npm run test:e2e
+        run:  npm run playwright test 
