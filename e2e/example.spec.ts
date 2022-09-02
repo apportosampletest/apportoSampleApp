@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-
+const axios = require('axios')
 test('should navigate to the login page', async ({ page }) => {
     // Start from the home page and go to index page 
     await page.goto('/login')
@@ -11,6 +11,12 @@ test('should navigate to the login page', async ({ page }) => {
     await page.locator('#submit').click();
     // Find an element with the id 'updated-value' and check if the text entered in Id input box exists in it
     await page.locator('#updated-value', { hasText:"testApporto"});
+    
     // Find an element with the id 'updated-value' and check if the text entered in Password input box exists in it
     await page.locator('#updated-value', { hasText: "apporto" });
+    const response = await page.evaluate(async () => {
+        return await fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(r => {return r})
+    })
+    console.log("/////////////////", response)
 })
